@@ -1,4 +1,4 @@
-package Algoritma;
+package Kolay.Algoritma;
 
 import java.util.Scanner;
 
