@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 
 namespace SessizHarf
 {
@@ -9,21 +10,33 @@ namespace SessizHarf
             Console.Write("Bir cumle girin:");
             string str = Console.ReadLine();
 
-            string[] strArr = str.Split(" ");
-            string[] strArrReverese = new string[strArr.Length];
-            
-            
+            String[] strArr = str.Split(" ");
+
+            string vowels = "AaEeIıİiOoÖöUuÜü";
+
             for (int i = 0; i < strArr.Length; i++)
             {
-                char[] reverse = strArr[i].ToCharArray();
-                Array.Reverse(reverse);
-                strArrReverese[i] =  new string(reverse);
+                char[] test = strArr[i].ToCharArray();
+                int count = 0;
+                for (int j = 0; j < test.Length; j++)
+                {
+                    
+                    if(vowels.Contains(test[j]))
+                    {
+                        count=0;
+                    }
+                    else
+                        count++;
 
-            }
+                    if(count==2)
+                    {
+                        System.Console.Write("True ");
+                        break;
+                    }
 
-            foreach (string item in strArrReverese)
-            {
-                System.Console.Write(item+" ");
+                    if(j==test.Length-1 && count<2)
+                        System.Console.Write("False ");
+                }
             }
         }
     }
